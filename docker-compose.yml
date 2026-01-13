@@ -1,0 +1,44 @@
+# Docker Compose Configuration
+# 
+# This file defines the infrastructure services required for the project.
+# It sets up a single-node Kafka cluster using Zookeeper.
+#
+# Services:
+# 1. zookeeper: Coordinates distributed services (required by Kafka).
+# 2. kafka: The message broker for event streaming.
+#
+# Usage:
+# Start: docker-compose up -d
+# Stop: docker-compose down
+
+version: '3.8'
+
+services:
+  # --- Zookeeper Service ---
+  # Required for Kafka metadata management.
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  # --- Kafka Service ---
+  # The core message broker.
+  # Exposes port 9092 for external access (e.g., from Python backend).
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      # Configuration to expose Kafka on localhost:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+

@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+aiokafka
+mysql-connector-python
+python-multipart
+python-dotenv
+websockets
