@@ -98,13 +98,13 @@ const TaskBoard = ({ refreshTrigger }) => {
                          key={s}
                          onClick={() => handleStatusChange(task.id, s)}
                          className={clsx(
-                           "text-xs px-3 py-1 rounded-full font-medium transition-colors border",
+                           "text-xs px-3 py-1 rounded-full font-medium transition-all border",
                            {
                              'bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 dark:hover:bg-gray-500': s === 'Todos',
-                             'bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 dark:bg-blue-900/50 dark:text-blue-200 dark:border-blue-800': s === 'In Progress',
-                             'bg-green-100 text-green-600 border-green-200 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800': s === 'Done',
-                             'bg-yellow-100 text-yellow-600 border-yellow-200 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-200 dark:border-yellow-800': s === 'For Testing',
-                             'bg-purple-100 text-purple-600 border-purple-200 hover:bg-purple-200 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800': s === 'Deployment',
+                             'bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-200 dark:bg-blue-900/50 dark:text-blue-200 dark:border-blue-800 dark:hover:bg-blue-800': s === 'In Progress',
+                             'bg-green-100 text-green-600 border-green-200 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-200 dark:border-green-800 dark:hover:bg-green-800': s === 'Done',
+                             'bg-yellow-100 text-yellow-600 border-yellow-200 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-200 dark:border-yellow-800 dark:hover:bg-yellow-800': s === 'For Testing',
+                             'bg-purple-100 text-purple-600 border-purple-200 hover:bg-purple-200 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800 dark:hover:bg-purple-800': s === 'Deployment',
                            }
                          )}
                        >
