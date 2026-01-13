@@ -1,6 +1,6 @@
 # Mini Task Management System
 
-A real-time task management app built with **FastAPI**, **React**, **Kafka**, and **MySQL**.
+A mini task management app built with **FastAPI**, **React**, **Kafka**, and **MySQL**.
 
 ## Prerequisites
 
