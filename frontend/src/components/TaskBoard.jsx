@@ -63,13 +63,13 @@ const TaskBoard = ({ refreshTrigger }) => {
   const getTasksByStatus = (status) => tasks.filter(t => t.status === status);
 
   return (
-    // Fixed height relative to viewport (adjust 12rem based on header/padding)
-    <div className="flex flex-col xl:flex-row gap-4 w-full h-[calc(100vh-12rem)] min-h-[500px] pb-4">
+    // Fixed height relative to viewport on XL screens, natural height on smaller screens
+    <div className="flex flex-col xl:flex-row gap-4 w-full xl:h-[calc(100vh-12rem)] min-h-[500px] pb-4">
       {Object.entries(COLUMNS).map(([status, bgClass]) => (
         <div key={status} className="flex-1 relative p-[1px] rounded-[30px] bg-gradient-to-br from-white to-gray-500 flex flex-col">
           <div className={clsx("h-full w-full p-4 rounded-[29px] flex flex-col", bgClass)}>
             <h3 className="font-bold text-lg mb-4 text-gray-700 dark:text-gray-200 px-2 flex-shrink-0">{status}</h3>
-            <div className="flex flex-col gap-3 flex-1 overflow-y-auto pr-2">
+            <div className="flex flex-col gap-3 flex-1 xl:overflow-y-auto pr-2">
             <AnimatePresence mode="popLayout">
             {getTasksByStatus(status).map(task => (
               <motion.div
