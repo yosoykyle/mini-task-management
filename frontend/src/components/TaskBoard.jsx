@@ -73,8 +73,19 @@ const TaskBoard = ({ refreshTrigger }) => {
     <div className="flex flex-col xl:flex-row gap-4 w-full xl:h-[calc(100vh-12rem)] min-h-[500px] pb-4">
       {/* LayoutGroup helps Framer Motion animate items moving between lists smoothly */}
       <LayoutGroup>
-      {Object.entries(COLUMNS).map(([status, bgClass]) => (
-        <div key={status} className="flex-1 relative p-[1px] rounded-[30px] bg-gradient-to-br from-white to-gray-500 flex flex-col">
+      {Object.entries(COLUMNS).map(([status, bgClass], index) => (
+        <motion.div 
+          key={status} 
+          className="flex-1 relative p-[1px] rounded-[30px] bg-gradient-to-br from-white to-gray-500 flex flex-col"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.5,
+            delay: index * 0.1, // Stagger effect: each column appears slightly after the previous one
+            type: "spring",
+            stiffness: 100
+          }}
+        >
           <div className={clsx("h-full w-full p-4 rounded-[29px] flex flex-col", bgClass)}>
             <h3 className="font-bold text-lg mb-4 text-gray-700 dark:text-gray-200 px-2 flex-shrink-0">{status}</h3>
             
@@ -131,7 +142,7 @@ const TaskBoard = ({ refreshTrigger }) => {
             </AnimatePresence>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
       </LayoutGroup>
     </div>
