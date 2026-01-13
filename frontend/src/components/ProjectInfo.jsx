@@ -1,21 +1,19 @@
 /**
- * Project Info Modal Component
+ * Project Info Model Component
  * 
- * Displays details about the project and the list of team members.
- * Features:
- * 1.  Modal layout with backdrop blur.
- * 2.  Responsive design:
- *     - 2-column member list on desktop.
- *     - Stacked list on mobile with left-aligned header.
- * 3.  Custom scrollbar for overflow content.
+ * This is a "Static" informational page.
+ * Unlike the Board, it doesn't fetch data from a server. 
+ * It just displays a hardcoded list of names (The Team).
  */
 
 import React from 'react';
 
 const ProjectInfo = ({ isOpen, onClose }) => {
+  // If the "Show Info" switch is off, return nothing (render nothing).
   if (!isOpen) return null;
 
-  // Hardcoded list of student members
+  // This is a plain Javascript Array. 
+  // In a real app, this might also come from a database, but for now, it's just typed here.
   const members = [
     { id: "2023-00353-SP-0", name: "ARABACA, IRISH MAY NAAG" },
     { id: "2023-00354-SP-0", name: "BALUYOT, KYLE FAJARDO" },

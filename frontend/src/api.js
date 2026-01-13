@@ -1,56 +1,58 @@
 /**
  * API Service Module
  *
- * Handles all HTTP requests to the Backend API using Axios.
- * - Base URL is configured from environment variables.
- * - Endpoints: Tasks CRUD.
+ * This file is the "Messenger" or "Phone Line".
+ *
+ * Instead of component files talking directly to the outside world,
+ * they give their messages to this file, and this file handles the actual calling.
+ *
+ * It uses 'axios', which is like a web browser in code form.
  */
 
 import axios from "axios";
 
 // Get API URL from .env, default to localhost
+// This is the "Phone Number" of the backend.
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
+// Create a configured instance (like saving the contact number)
 const api = axios.create({
   baseURL: API_URL,
 });
 
 // --- Task API Calls ---
+// These functions correspond to the "Menu Items" the backend offers.
 
 /**
- * Fetches all tasks from the API.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response containing tasks.
+ * GET all tasks.
+ * Analogy: Asking the waiter "What is on the list?"
  */
 export const getTasks = () => api.get("/api/tasks");
 
 /**
- * Creates a new task.
- * @param {object} task - The task object to create.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response containing the created task.
+ * POST (Create) a new task.
+ * Analogy: Filling out an order form and giving it to the kitchen.
+ * @param {object} task - The data to send (title, description).
  */
 export const createTask = (task) => api.post("/api/tasks", task);
 
 /**
- * Updates the status of a specific task.
- * @param {string} id - The ID of the task to update.
- * @param {string} status - The new status for the task.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response.
+ * PATCH (Update) a task status.
+ * Analogy: Telling the waiter "I changed my mind, I want this done now."
+ * We use PATCH because we are only changing *part* of the task (the status), not the whole thing.
  */
 export const updateTaskStatus = (id, status) =>
   api.patch(`/api/tasks/${id}`, { status });
 
 /**
- * Deletes a specific task.
- * @param {string} id - The ID of the task to delete.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response.
+ * DELETE a task.
+ * Analogy: Asking the waiter to throw away a bad order.
  */
 export const deleteTask = (id) => api.delete(`/api/tasks/${id}`);
 
 /**
- * Assigns a task to a user.
- * @param {string} id - The ID of the task to assign.
- * @param {string} userId - The ID of the user to assign the task to.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response.
+ * PUT (Assign) a user to a task.
+ * Analogy: Pointing to a chef and saying "You cook this one."
  */
 export const assignTask = (id, userId) =>
   api.put(`/api/tasks/${id}/assign/${userId}`);
@@ -58,16 +60,16 @@ export const assignTask = (id, userId) =>
 // --- User API Calls ---
 
 /**
- * Fetches all users from the API.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response containing users.
+ * GET all users.
+ * Analogy: "Who is working today?"
  */
 export const getUsers = () => api.get("/api/users");
 
 /**
- * Creates a new user.
- * @param {object} user - The user object to create.
- * @returns {Promise<AxiosResponse>} A promise that resolves to the API response containing the created user.
+ * POST a new user.
+ * Analogy: Hiring a new staff member.
  */
 export const createUser = (user) => api.post("/api/users", user);
 
+// Export the default api instance in case we need to make custom calls elsewhere.
 export default api;
