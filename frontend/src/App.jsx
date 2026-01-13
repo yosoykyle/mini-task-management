@@ -93,7 +93,8 @@ function App() {
         
         {/* Main Kanban Board */}
         {/* We pass 'refreshKey' to it. When the key changes, the board re-loads. */}
-        <TaskBoard refreshTrigger={refreshKey} />
+        {/* We also pass 'lastEvent' so the board knows WHICH column to flash. */}
+        <TaskBoard refreshTrigger={refreshKey} lastEvent={lastJsonMessage} />
         
         {/* Project Info Modal */}
         <ProjectInfo isOpen={showProjectInfo} onClose={() => setShowProjectInfo(false)} />
