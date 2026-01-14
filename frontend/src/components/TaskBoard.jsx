@@ -64,8 +64,8 @@ const TaskBoard = ({ refreshTrigger, lastEvent }) => {
         // Trigger the "Tone Up" animation (Flash Brighter)
         // Brightness goes: 1 -> 1.3 -> 1 -> 1.3 -> 1
         columnControls[targetColumn].start({
-          filter: ["brightness(1)", "brightness(1.5)", "brightness(1)", "brightness(1.5)", "brightness(1)"],
-          transition: { duration: 0.6 }
+          filter: ["brightness(1)", "brightness(1.5)", "brightness(1)", "brightness(2)", "brightness(1)"],
+          transition: { duration: 1 }
         });
       }
     }
