@@ -186,11 +186,11 @@ const TaskBoard = ({ refreshTrigger, lastEvent }) => {
                              className={clsx(
                                "text-[10px] px-2.5 py-1 rounded-lg font-medium transition-all border shadow-sm",
                                {
-                                 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 dark:hover:bg-gray-500': s === 'Todos',
-                                 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-800 dark:hover:bg-blue-900/50': s === 'In Progress',
-                                 'bg-green-50 text-green-600 border-green-100 hover:bg-green-100 dark:bg-green-900/30 dark:text-green-200 dark:border-green-800 dark:hover:bg-green-900/50': s === 'Done',
-                                 'bg-yellow-50 text-yellow-600 border-yellow-100 hover:bg-yellow-100 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800 dark:hover:bg-yellow-900/50': s === 'For Testing',
-                                 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-100 dark:bg-purple-900/30 dark:text-purple-200 dark:border-purple-800 dark:hover:bg-purple-900/50': s === 'Deployment',
+                                 'bg-white text-gray-600 border-gray-200 hover:bg-gray-200 dark:bg-gray-600 dark:text-gray-200 dark:border-gray-500 dark:hover:bg-gray-400': s === 'Todos',
+                                 'bg-blue-50 text-blue-600 border-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-200 dark:border-blue-800 dark:hover:bg-blue-800': s === 'In Progress',
+                                 'bg-green-50 text-green-600 border-green-100 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-200 dark:border-green-800 dark:hover:bg-green-800': s === 'Done',
+                                 'bg-yellow-50 text-yellow-600 border-yellow-100 hover:bg-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-200 dark:border-yellow-800 dark:hover:bg-yellow-800': s === 'For Testing',
+                                 'bg-purple-50 text-purple-600 border-purple-100 hover:bg-purple-200 dark:bg-purple-900/30 dark:text-purple-200 dark:border-purple-800 dark:hover:bg-purple-800': s === 'Deployment',
                                }
                              )}
                            >
